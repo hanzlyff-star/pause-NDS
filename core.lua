@@ -699,23 +699,21 @@ chatLabel.TextSize = 11
 chatLabel.TextXAlignment = Enum.TextXAlignment.Left
 chatLabel.Parent = main
 
-local autoChatBox = Instance.new("TextBox")
-autoChatBox.Size = UDim2.new(1, -30, 0, 32)
-autoChatBox.Position = UDim2.new(0, 15, 0, 186)
-autoChatBox.BackgroundColor3 = Color3.fromRGB(30, 32, 40)
-autoChatBox.BorderSizePixel = 0
-autoChatBox.Text = "PAUSE RONDE BY HANZ"
-autoChatBox.PlaceholderText = "tulis pesan auto chat..."
-autoChatBox.TextColor3 = Color3.fromRGB(230, 235, 245)
-autoChatBox.PlaceholderColor3 = Color3.fromRGB(100, 105, 120)
-autoChatBox.Font = Enum.Font.Gotham
-autoChatBox.TextSize = 12
-autoChatBox.ClearTextOnFocus = false
-autoChatBox.Parent = main
+local chatDisplay = Instance.new("TextLabel")
+chatDisplay.Size = UDim2.new(1, -30, 0, 32)
+chatDisplay.Position = UDim2.new(0, 15, 0, 186)
+chatDisplay.BackgroundColor3 = Color3.fromRGB(30, 32, 40)
+chatDisplay.BorderSizePixel = 0
+chatDisplay.Text = "PAUSE RONDE BY HANZ"
+chatDisplay.TextColor3 = Color3.fromRGB(230, 235, 245)
+chatDisplay.Font = Enum.Font.Gotham
+chatDisplay.TextSize = 12
+chatDisplay.TextXAlignment = Enum.TextXAlignment.Left
+chatDisplay.Parent = main
 
-local boxCorner = Instance.new("UICorner")
-boxCorner.CornerRadius = UDim.new(0, 6)
-boxCorner.Parent = autoChatBox
+local displayCorner = Instance.new("UICorner")
+displayCorner.CornerRadius = UDim.new(0, 6)
+displayCorner.Parent = chatDisplay
 
 local statusLabel = Instance.new("TextLabel")
 statusLabel.Size = UDim2.new(1, -30, 0, 16)
@@ -731,6 +729,7 @@ statusLabel.Parent = main
 local isPaused = false
 local autoChatThread = nil
 local AUTO_CHAT_INTERVAL = 5
+local AUTO_CHAT_MESSAGE = "PAUSE RONDE BY HANZ"
 
 local function sendChat(msg)
     msg = tostring(msg):sub(1, 200)
@@ -770,10 +769,7 @@ local function startAutoChat()
     stopAutoChat()
     autoChatThread = task.spawn(function()
         while isPaused do
-            local msg = autoChatBox.Text
-            if msg and msg ~= "" then
-                sendChat(msg)
-            end
+            sendChat(AUTO_CHAT_MESSAGE)
             task.wait(AUTO_CHAT_INTERVAL)
         end
     end)
